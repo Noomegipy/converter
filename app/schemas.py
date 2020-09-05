@@ -9,7 +9,7 @@ from marshmallow.validate import OneOf, Range
 class ConvertRequestSchema(Schema):
     from_cur = fields.String(required=True, data_key='from')
     to_cur = fields.String(required=True, data_key='to')
-    amount = fields.Decimal(required=True, places=2, validate=[Range(min=0, error="Value must be greater than 0")])
+    amount = fields.Decimal(required=True, places=2, validate=[Range(min=0, error="Value must be non negative")])
 
 
 class ConvertResponseSchema(Schema):
@@ -26,8 +26,7 @@ class DatabaseCurrencySchema(Schema):
             keys=fields.Str(),
             values=fields.Decimal(
                 as_string=True,
-                validate=[Range(min=0, error="Value must be greater than 0")],
-                #places=4,
+                validate=[Range(min=0, error="Value must be non negative")],
             )
         ), required=True
     )

@@ -1,3 +1,5 @@
+import os
+
 from sanic import Sanic
 from sanic.request import Request
 from sanic.response import json as make_json
@@ -28,7 +30,8 @@ converter = ConverterApplication(name='converter')
 
 @converter.listener('after_server_start')
 async def setup_redis(app, loop):  # pylint: disable=unused-argument
-    app.redis = await get_redis_pool()
+    redis_host = os.environ.get("REDIS_HOST", "localhost")
+    app.redis = await get_redis_pool(host=redis_host)
 
 
 @converter.listener('before_server_stop')
