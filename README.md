@@ -3,7 +3,7 @@ Test application for covert currencies
 #### How to run:
 docker-compose up -d
 
-Will run build from repo + run redis
+Will run build from repo + run redis.
 We could use Nginx, but Sanic can be run directly on Internet.
 
 ###API EXAMPLES
