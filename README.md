@@ -1,4 +1,4 @@
-Test application for covert currencies
+Test application for convert currencies
 
 #### How to run:
 docker-compose up -d
